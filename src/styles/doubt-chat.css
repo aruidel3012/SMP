@@ -1,0 +1,179 @@
+.doubt-chat-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hv);
+  background: var(--bg-2);
+  color: var(--t0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(30, 120, 255, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.doubt-chat-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(30, 120, 255, 0.45);
+}
+.doubt-chat-drawer {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  width: 360px;
+  max-height: 520px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+.doubt-chat-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.doubt-chat-header h4 {
+  font-size: 0.9rem;
+  color: var(--t0);
+}
+.doubt-chat-header span {
+  font-size: 0.72rem;
+  color: var(--t2);
+}
+.doubt-chat-box {
+  flex: 1;
+  padding: 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 200px;
+  max-height: 300px;
+}
+.doubt-chat-empty {
+  text-align: center;
+  color: var(--t2);
+  font-size: 0.78rem;
+  padding: 2rem 0;
+}
+.doubt-chat-msg {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+  margin-bottom: 0.4rem;
+}
+.doubt-chat-msg.admin {
+  flex-direction: row-reverse;
+}
+.doubt-chat-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--blue-lt);
+  flex-shrink: 0;
+}
+.doubt-chat-msg.admin .doubt-chat-avatar {
+  background: rgba(30, 120, 255, 0.15);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.doubt-chat-bubble {
+  max-width: 80%;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.5rem 0.7rem;
+}
+.doubt-chat-msg.admin .doubt-chat-bubble {
+  background: rgba(30, 120, 255, 0.1);
+  border-color: rgba(30, 120, 255, 0.25);
+}
+.doubt-chat-bubble-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.15rem;
+}
+.doubt-chat-bubble-meta strong {
+  font-size: 0.65rem;
+  color: var(--blue-lt);
+}
+.doubt-chat-msg.admin .doubt-chat-bubble-meta strong {
+  color: var(--blue);
+}
+.doubt-chat-bubble-meta span {
+  font-size: 0.6rem;
+  color: var(--t2);
+}
+.doubt-chat-bubble p {
+  font-size: 0.78rem;
+  color: var(--t0);
+  line-height: 1.5;
+  word-break: break-word;
+}
+.doubt-chat-compose {
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.doubt-chat-compose input {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.78rem;
+  color: var(--t0);
+  outline: none;
+}
+.doubt-chat-compose input:focus {
+  border-color: var(--blue);
+}
+.doubt-chat-row {
+  display: flex;
+  gap: 0.4rem;
+}
+.doubt-chat-row input {
+  flex: 1;
+}
+.doubt-chat-row button {
+  background: var(--blue);
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.doubt-chat-row button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+@media (max-width: 480px) {
+  .doubt-chat-drawer {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 5rem;
+    max-height: 60vh;
+  }
+}

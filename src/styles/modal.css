@@ -1,0 +1,292 @@
+.fgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.fgroup label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--t1);
+  letter-spacing: 0.04em;
+}
+.fgroup input,
+.fgroup textarea {
+  background: rgba(5, 7, 9, 0.65);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.85rem 1.1rem;
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  color: var(--t0);
+  outline: none;
+  transition:
+    border-color 0.22s,
+    box-shadow 0.22s;
+  resize: none;
+  width: 100%;
+}
+.fgroup input::placeholder,
+.fgroup textarea::placeholder {
+  color: var(--t2);
+}
+.fgroup input:focus,
+.fgroup textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 120, 255, 0.12);
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(3, 5, 9, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: backdropIn 0.25s var(--ease) both;
+}
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(160deg, #0c1422 0%, #080d14 100%);
+  border: 1px solid rgba(30, 120, 255, 0.22);
+  border-radius: var(--r2);
+  padding: clamp(1.8rem, 5vw, 2.6rem);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(30, 120, 255, 0.08);
+  animation: modalIn 0.3s var(--ease) both;
+}
+.modal-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--t1);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--t0);
+}
+.modal-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  font-family: var(--ff-h);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--t0);
+  margin-bottom: 1.6rem;
+}
+.modal-logo .logo__icon {
+  color: var(--blue);
+  font-size: 1.5rem;
+}
+.modal-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.25rem;
+  gap: 0.25rem;
+  margin-bottom: 1.8rem;
+}
+.modal-tabs button {
+  flex: 1;
+  padding: 0.55rem;
+  border-radius: calc(var(--r) - 2px);
+  border: none;
+  background: none;
+  color: var(--t1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.22s var(--ease);
+}
+.modal-tabs button.active {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 16px var(--glow);
+}
+.modal-tabs button:not(.active):hover {
+  color: var(--t0);
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-body .fgroup label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--t1);
+}
+.modal-body .fgroup input {
+  background: rgba(5, 7, 9, 0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.8rem 1rem;
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  color: var(--t0);
+  outline: none;
+  width: 100%;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.modal-body .fgroup select {
+  background: rgba(5, 7, 9, 0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.8rem 1rem;
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  color: var(--t0);
+  outline: none;
+  width: 100%;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.modal-body .fgroup input::placeholder {
+  color: var(--t2);
+}
+.modal-body .fgroup input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 120, 255, 0.12);
+}
+.modal-body .fgroup select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 120, 255, 0.12);
+}
+.modal-error {
+  font-size: 0.82rem;
+  color: #ff6b6b;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--r);
+  animation: shake 0.35s var(--ease);
+}
+.modal-success {
+  font-size: 0.82rem;
+  color: #4ade80;
+  text-align: center;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--r);
+}
+.modal-note {
+  font-size: 0.78rem;
+  color: var(--t2);
+  text-align: center;
+  line-height: 1.5;
+}
+.modal-submit {
+  margin-top: 0.2rem;
+}
+.modal-back {
+  background: none;
+  border: none;
+  color: var(--t2);
+  font-size: 0.82rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-back:hover {
+  color: var(--blue-lt);
+}
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spinAnim 0.7s linear infinite;
+}
+.verify-icon {
+  font-size: 2.8rem;
+  text-align: center;
+}
+.verify-text {
+  font-size: 0.9rem;
+  color: var(--t1);
+  text-align: center;
+  line-height: 1.7;
+}
+.verify-text strong {
+  color: var(--t0);
+}
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.code-box {
+  width: 44px;
+  height: 54px;
+  text-align: center;
+  background: rgba(5, 7, 9, 0.75);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  font-family: var(--ff-h);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--t0);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  caret-color: var(--blue-lt);
+}
+.code-box:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 120, 255, 0.15);
+}
+.code-box:not(:placeholder-shown) {
+  border-color: rgba(30, 120, 255, 0.35);
+}
+.modal--confirm {
+  max-width: 480px !important;
+  border: 1px solid rgba(30, 120, 255, 0.3) !important;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8), 
+              0 0 40px rgba(30, 120, 255, 0.1) !important;
+}
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 0.8rem !important;
+  }
+  .modal--confirm {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 16px !important;
+  }
+}
+@media (max-width: 480px) {
+  .code-box {
+    width: 38px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+  .modal {
+    padding: 1.5rem;
+  }
+}

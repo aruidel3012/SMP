@@ -1,0 +1,184 @@
+.pricing {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: linear-gradient(180deg, rgba(5, 7, 9, 0.1), rgba(8, 13, 20, 0.68));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid rgba(77, 163, 255, 0.16);
+  border-radius: var(--r);
+  background:
+    linear-gradient(180deg, rgba(10, 16, 28, 0.92), rgba(6, 10, 18, 0.9)),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--plan-color) 18%, transparent), transparent 42%);
+  padding: clamp(1.1rem, 2vw, 1.35rem);
+  overflow: hidden;
+}
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--plan-color);
+}
+.pricing-card--highlighted {
+  border-color: color-mix(in srgb, var(--plan-color) 58%, transparent);
+  box-shadow: 0 18px 50px rgba(30, 120, 255, 0.16);
+}
+.pricing-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.pricing-card__name {
+  font-family: var(--ff-h);
+  font-size: 1.05rem;
+  color: var(--t0);
+  line-height: 1.25;
+}
+.pricing-card__desc {
+  color: var(--t1);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin-top: 0.45rem;
+}
+.pricing-badge {
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--plan-color) 40%, transparent);
+  border-radius: 999px;
+  color: var(--plan-color);
+  background: color-mix(in srgb, var(--plan-color) 12%, transparent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.62rem;
+  margin-bottom: 0.75rem;
+}
+.pricing-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin: 1.1rem 0 0.8rem;
+}
+.pricing-price__currency,
+.pricing-price__period {
+  color: var(--t1);
+  font-size: 0.82rem;
+}
+.pricing-price__amount {
+  font-family: var(--ff-h);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--t0);
+  line-height: 1;
+}
+.pricing-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+  list-style: none;
+  margin: 1rem 0 1.2rem;
+}
+.pricing-feature {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  color: var(--t1);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.pricing-feature__check {
+  flex: 0 0 auto;
+  color: var(--plan-color);
+  font-weight: 800;
+}
+.pricing-cta {
+  margin-top: auto;
+  width: 100%;
+}
+.pricing-note {
+  margin: 1.2rem auto 0;
+  max-width: 760px;
+  color: var(--t1);
+  text-align: center;
+  font-size: 0.82rem;
+}
+.subscriptions-section,
+.plans-section,
+.active-subs,
+.cancelled-subs {
+  display: grid;
+  gap: 1rem;
+}
+.subscriptions-section h3,
+.plans-section h3,
+.active-subs h3,
+.cancelled-subs h3 {
+  font-family: var(--ff-h);
+}
+.active-subs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.active-sub-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid rgba(77, 163, 255, 0.16);
+  border-radius: var(--r);
+  background:
+    linear-gradient(180deg, rgba(10, 16, 28, 0.92), rgba(6, 10, 18, 0.9)),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--plan-color) 18%, transparent), transparent 42%);
+  padding: clamp(1.1rem, 2vw, 1.35rem);
+  overflow: hidden;
+}
+.active-sub-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--plan-color);
+}
+.active-sub-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.active-sub-card h4 {
+  font-family: var(--ff-h);
+  font-size: 1.05rem;
+  color: var(--t0);
+  line-height: 1.25;
+}
+.active-sub-card__date,
+.active-sub-card p {
+  color: var(--t1);
+  font-size: 0.8rem;
+}
+.active-sub-card .btn {
+  margin-top: auto;
+}
+.pricing-onetime-tag {
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--plan-color) 40%, transparent);
+  border-radius: 999px;
+  color: var(--plan-color);
+  background: color-mix(in srgb, var(--plan-color) 12%, transparent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.62rem;
+}
