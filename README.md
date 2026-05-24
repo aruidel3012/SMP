@@ -17,7 +17,7 @@
 
 ### 🌐 Web
 
-La aplicación está disponible en:**[https://smp.pages.dev](https://smp.pages.dev)**
+La aplicación está disponible en:**[https://smp.wisrude.com](https://smp.wisrude.com)**
 
 ---
 
