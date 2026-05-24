@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+<div align="center">
+  <img src="src/assets/SMP.png" alt="SMP Logo" width="120" />
+  <h1 align="center" style="font-size: 3rem; margin: 0.5rem 0;">SMP</h1>
+  <p align="center" style="font-size: 1.2rem; color: #4da3ff; font-weight: 500;">
+    Software Maintenance Project
+  </p>
+  <p align="center">
+    Plataforma de gestión de mantenimiento informático, soporte técnico y cursos formativos.
+  </p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📋 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**SMP** es una aplicación web completa diseñada para la gestión de servicios de mantenimiento informático. Permite a los clientes contratar planes de suscripción o pago único, solicitar reparaciones a distancia, abrir tickets de soporte, gestionar pagos y acceder a cursos formativos.
 
-## React Compiler
+### 🌐 Web
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+La aplicación está disponible en:**[https://smp.pages.dev](https://smp.pages.dev)**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Tecnologías utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Frontend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Tecnología | Uso |
+|------------|-----|
+| **React 19** | Librería de interfaz de usuario |
+| **TypeScript** | Tipado estático |
+| **Vite 8** | Bundler y dev server |
+| **Framer Motion** | Animaciones |
+| **CSS Modules** | Estilos modulares |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Backend
+
+| Tecnología | Uso |
+|------------|-----|
+| **Node.js / Express** | Servidor API REST |
+| **TypeScript** | Tipado estático |
+| **MongoDB + Mongoose** | Base de datos |
+| **JWT** | Autenticación |
+| **Resend** | Envío de emails |
+
+### DevOps
+
+| Tecnología | Uso |
+|------------|-----|
+| **Cloudflare Pages** | Hosting del frontend |
+| **Render** | Hosting del backend |
+| **GitHub** | Control de versiones |
+
+---
+
+## ✨ Funcionalidades principales
+
+- 🔐 **Autenticación** con registro, login y verificación por email
+- 📦 **Planes de suscripción** (Básico, Pro, Completo) y pago único (Learning)
+- 🛠️ **Contratación de servicios** de mantenimiento
+- 🎫 **Tickets de soporte** técnico
+- 💻 **Reparación a distancia**
+- 💳 **Gestión de métodos de pago** (tarjeta, transferencia, bizum)
+- 📚 **Curso formativo** incluido en el plan Learning
+- 👨‍💼 **Panel de administración** con gestión de usuarios, contratos y soporte
+
+---
+
+## 📦 Instalación y uso
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/aruidel3012/SMP.git
+
+# Instalar dependencias
+cd SMP && npm install
+
+# Variables de entorno (backend)
+# Copiar .env.example y rellenar los valores
+cp .env.example .env
+
+# Iniciar en desarrollo (API + Frontend simultáneamente)
+npm run dev
+
+# Solo backend
+npm run dev:api
+
+# Solo frontend
+npm run dev:web
+
+# Build producción
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 👥 Creado por
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <strong>Antonio Alejandro Ruiz Delgado</strong>
+      </td>
+      <td align="center">
+        <strong>Pablo Castañeda Martin</strong>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <strong>Curso 2º SMR</strong>
+</div>
+
+---
+
+<div align="center">
+  <sub>© 2026 SMP - Software Maintenance Project</sub>
+</div>
