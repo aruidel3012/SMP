@@ -13,6 +13,7 @@ import { AdminUsers } from "./admin/AdminUsers";
 import { AdminContracts } from "./admin/AdminContracts";
 import { AdminSupport } from "./admin/AdminSupport";
 import { AdminDoubtChats } from "./admin/AdminDoubtChats";
+import { AdminRepairs } from "./admin/AdminRepairs";
 import { ClientShell } from "./client/ClientShell";
 import { ClientOverview } from "./client/ClientOverview";
 import { ClientSubscriptions } from "./client/ClientSubscriptions";
@@ -102,6 +103,8 @@ export function ClientArea({
         ? "adminContracts"
       : pathname.startsWith("/portal/admin/panel")
         ? "adminPanel"
+      : pathname.startsWith("/portal/admin/reparaciones")
+        ? "adminRepairs"
       : pathname.startsWith("/portal/admin/consultas")
         ? "doubtChats"
         : pathname.startsWith("/portal/admin/chats")
@@ -152,7 +155,7 @@ export function ClientArea({
         authFetch("/account/profile"),
         authFetch("/subscriptions"),
         isAdmin ? Promise.resolve({ methods: [] }) : authFetch("/payments"),
-        isAdmin ? Promise.resolve({ repairs: [] }) : authFetch("/repairs"),
+        authFetch("/repairs"),
         isAdmin ? authFetch("/client-management/users") : Promise.resolve({ users: [] }),
       ]);
       setServices(svcData.services || []);
@@ -593,6 +596,32 @@ export function ClientArea({
     }
   };
 
+  const handleUpdateRepairStatus = async (id: string, status: RemoteRepair["status"], scheduledAt?: string, technicianNotes?: string) => {
+    try {
+      await authFetch(`/repairs/${id}/status`, {
+        method: "PATCH",
+        body: JSON.stringify({ status, scheduledAt, technicianNotes }),
+      });
+      showNotice("Estado de reparacion actualizado.");
+      const repData = await authFetch("/repairs");
+      setRepairs(repData.repairs || []);
+    } catch (e) {
+      if (e instanceof Error) showError(e.message);
+    }
+  };
+
+  const handleDeleteRepair = async (id: string) => {
+    if (!confirm("¿Eliminar esta solicitud de reparacion permanentemente?")) return;
+    try {
+      await authFetch(`/repairs/${id}`, { method: "DELETE" });
+      showNotice("Solicitud eliminada.");
+      const repData = await authFetch("/repairs");
+      setRepairs(repData.repairs || []);
+    } catch (e) {
+      if (e instanceof Error) showError(e.message);
+    }
+  };
+
   const handleRequestDelete = async () => {
     if (!confirm("Esta accion eliminara permanentemente tu cuenta y todos tus datos. ¿Continuar?")) return;
     setDeleteLoading(true);
@@ -623,6 +652,7 @@ export function ClientArea({
       : portalPage === "adminPanel" ? "Panel"
       : portalPage === "adminContracts" ? "Contrataciones de clientes"
       : portalPage === "doubtChats" ? "Consultas de clientes"
+      : portalPage === "adminRepairs" ? "Reparacion a distancia"
       : portalPage === "adminUsers" ? "Usuarios"
       : "Panel de administrador"
     : portalPage === "support" ? "Soporte técnico"
@@ -728,6 +758,14 @@ export function ClientArea({
             handleDoubtReply={handleDoubtReply}
             handleDeleteDoubtMessage={handleDeleteDoubtMessage}
             doubtChatBoxRef={doubtChatBoxRef}
+          />
+        )}
+        {portalPage === "adminRepairs" && (
+          <AdminRepairs
+            repairs={repairs}
+            handleUpdateRepairStatus={handleUpdateRepairStatus}
+            handleDeleteRepair={handleDeleteRepair}
+            statusLabel={statusLabel}
           />
         )}
       </AdminShell>

@@ -10,7 +10,14 @@ repairsRouter.use(requireAuth);
 
 repairsRouter.get("/", async (req: Request, res: Response) => {
   try {
-    const query = req.user!.role === "admin" ? {} : { clientId: req.user!.sub };
+    const query: Record<string, unknown> = {};
+    if (req.user!.role === "admin") {
+      if (req.query.urgency && ["normal", "high", "critical"].includes(req.query.urgency as string)) {
+        query.urgency = req.query.urgency;
+      }
+    } else {
+      query.clientId = req.user!.sub;
+    }
     const repairs = await RemoteRepair.find(query).sort({ createdAt: -1 }).lean();
     res.json({ repairs });
   } catch (err: unknown) {
@@ -69,6 +76,16 @@ repairsRouter.patch("/:repairId/status", requireAdmin, async (req: Request, res:
     );
     if (!repair) return res.status(404).json({ message: "Solicitud no encontrada." });
     res.json({ repair });
+  } catch (err: unknown) {
+    res.status(500).json({ message: getPublicErrorMessage(err) });
+  }
+});
+
+repairsRouter.delete("/:repairId", requireAdmin, async (req: Request, res: Response) => {
+  try {
+    const repair = await RemoteRepair.findByIdAndDelete(req.params.repairId);
+    if (!repair) return res.status(404).json({ message: "Solicitud no encontrada." });
+    res.json({ message: "Solicitud eliminada." });
   } catch (err: unknown) {
     res.status(500).json({ message: getPublicErrorMessage(err) });
   }
